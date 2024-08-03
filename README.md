@@ -1,6 +1,7 @@
 # Object-Oriented Programming
 
 ## Class and Objects
+<details>
 ```
 #include <iostream>
 using namespace std;
@@ -34,6 +35,7 @@ int main ()
     return 0;
 }
 ```
+</details>
 
 ## Constructors
 ```
