@@ -28,6 +28,7 @@ int main ()
     Complex c2(2.3, 4.4);
 /*
 - Operator "+" is overloaded to handle expressions like c1 + c2 work naturally with user-defined types.
+- The compiler resolves the use of "+" based on the types involved at compile time.
 */
     Complex c3 = c1 + c2; // using overloaded "+" operator
     c3.display();
