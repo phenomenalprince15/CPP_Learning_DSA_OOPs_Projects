@@ -875,21 +875,478 @@ int main ()
     return 0;
 }
 ```
-
 ## Single Inheritance
+```
+#include <iostream>
+using namespace std;
+
+/*
+In single inheritance, one class inherits from a single base class.
+*/
+
+// Base Class
+class Animal {
+    public:
+        void eat() {
+            cout << "Animal is eating..." << endl;
+        }
+};
+
+// Derived Class
+class Dog : public Animal {
+    public:
+        void bark() {
+            cout << "Dog is barking..." << endl;
+        }
+};
+
+int main ()
+{   
+    Dog myDog;
+    myDog.bark();
+    myDog.eat();
+
+    return 0;
+}
+```
 
 ## Multiple Inheritance
+```
+#include <iostream>
+using namespace std;
+
+/*
+In multiple inheritance, a class inherits from more than one base class.
+*/
+
+// Base Class 1
+class Animal {
+    public:
+        void eat() {
+            cout << "Animal is eating..." << endl;
+        }
+};
+
+// Base Class 2
+class Pet {
+    public:
+        void play() {
+            cout << "Pet is playing." << endl;
+        }
+};
+
+// Derived Class
+class Dog : public Animal, public Pet {
+    public:
+        void bark() {
+            cout << "Dog is barking..." << endl;
+        }
+};
+
+int main ()
+{   
+    Dog myDog;
+    myDog.bark();
+    myDog.eat();
+    myDog.play();
+
+    return 0;
+}
+```
 
 ## Multi-level Inheritance
+```
+#include <iostream>
+using namespace std;
+
+/*
+In multi-level inheritance, a derived class is further derived by another class, creating a chain.
+*/
+
+// Base Class 1
+class Animal {
+    public:
+        void eat() {
+            cout << "Animal is eating..." << endl;
+        }
+};
+
+// Intermediate Derived Class
+class Mammal : public Animal {
+    public:
+        void walk() {
+            cout << "Mammal is walking." << endl;
+        }
+};
+
+// Further Derived Class
+class Dog : public Mammal {
+    public:
+        void bark() {
+            cout << "Dog is barking..." << endl;
+        }
+};
+
+int main ()
+{   
+    Dog myDog;
+    myDog.bark();
+    myDog.eat();
+    myDog.walk();
+
+    return 0;
+}
+```
 
 ## Hierarchial Inheritance
+```
+#include <iostream>
+using namespace std;
+
+/*
+In hierarchial inheritance, multiple classess inherit from the same base class.
+*/
+
+// Base Class
+class Animal {
+    public:
+        void eat() {
+            cout << "Animal is eating..." << endl;
+        }
+};
+
+// Derived Class 1
+class Cat : public Animal {
+    public:
+        void meow() {
+            cout << "Cat is meowing." << endl;
+        }
+};
+
+// Derived Class 2
+class Dog : public Animal {
+    public:
+        void bark() {
+            cout << "Dog is barking..." << endl;
+        }
+};
+
+int main ()
+{   
+    Dog myDog;
+    Cat myCat;
+
+    myDog.bark();
+    myDog.eat();
+
+    myCat.eat();
+    myCat.meow();
+
+    return 0;
+}
+```
 
 ## Template Programming
+```
+#include <iostream>
+using namespace std;
+
+/*
+Templace Programming
+- It allows you to write generic and reusable code that works with any data type.
+- Templates are a powerful feature in C++ that enable functions and classes to operate with genertic types making the code more flexible.
+
+-- Types ::
+--- Functional, Class, Template specialization and Variadic templates.
+
+*** Functional Templates ***
+- It creates a single function that can work with different data types.
+- template <typename T>
+T functionName(T param) {
+    // Function implementation
+}
+--- T is a placeholder that will be replaced by actual type when function is called.
+*/
+
+template <typename T>
+T add(T a, T b)
+{
+    return a + b;
+}
+
+/*
+*** Class Templates ***
+- It allows you to create a generic class that can work with any data type.
+- template <typename T>
+    class ClassName {
+        private:
+            T member;
+        public:
+            ClassName(T arg) : member(arg) {}
+        T getMember() {
+            return member;
+        }
+    };
+*/
+
+template <typename T>
+class Box {
+    private:
+        T value;
+    public:
+        Box(T v) : value(v) {}
+        T getValue() {
+            return value;
+        }
+};
+
+/*
+Template Specialization ::
+- It allows you to create a specific implementation of a template for a particular data type.
+- template <>
+    class ClassName<SpecifierType> {
+        // Specialized implementaion
+    }
+*/
+
+template <typename T>
+class Calculator {
+    public:
+        T add(T a, T b){
+            return a + b;
+        }
+};
+
+template <>
+class Calculator<string> {
+    public:
+        string add (string a, string b){
+            return a + " " + b;
+        }
+};
+
+/*
+variadic Templates ::
+- It allows you to create functions or classes that accept a variable number of template parameters.
+- template <typename... Args>
+void functionName(Args... args) {
+    // code
+}
+*/
+
+template <typename... Args>
+void print(Args... args) {
+    (cout << ... << args) << endl; // Fold expression C++17
+}
+
+int main()
+{
+    cout << add(3, 4) << endl;
+    cout << add(3.4, 5.6) << endl;
+
+    Box<int> intBox(123);
+    Box<double> doubleBox(123.456);
+    cout << "intBox : " << intBox.getValue() << endl;
+    cout << "doubleBox : " << doubleBox.getValue() << endl;
+
+    Calculator<int> intCalc;
+    Calculator<string> stringCalc;
+    cout << intCalc.add(3, 4) << endl; // Uses the generic template.
+    cout << stringCalc.add("Hello", "World ~") << endl; // Uses the special template.
+
+    // Variadic
+    print(1," ", 2," ", 3.5, " ", "Hello", " ", 'c');
+
+    return 0;
+}
+```
 
 ## Lambda Expressions
+```
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+/*
+Lambda Expressions ::
+- It allows you to define anonymous functions (functions without a name) directly in the code where they are used.
+- It makes the code more consise and readable, especially for short functions that are used only in a specific context.
+- Syntax ::
+[capture] (params) -> return type {
+    // functions body
+}
+--- capture defines variables from surrounding scope are captures and how (by value or reference).
+--- parameters specifies regular function parameters.
+-- return type is optional.
+*/
+
+int main ()
+{   
+    // without capture
+    auto add = [] (int a, int b) -> int{
+        return a + b;
+    };
+    cout << "Sum : " << add(5, 3) << endl;
+
+    // with capture
+    int x = 10;
+    int y = 20;
+    auto addition = [=] () {
+        return x + y; // x and y are captured by value. Change inside here won't affect original variables.
+    };
+    auto modify = [&] () {
+        x = x + y; // x and y are captured by reference. Change inside here will affect original variables.
+    };
+    cout << "Sum (by value) : " << addition() << endl;
+
+    modify();
+    cout << "Modified x : " << x << endl;
+
+    // Lambdas with STL
+    vector<int> nums = {5, 2, 8, 1, 3};
+    sort(nums.begin(), nums.end(), [](int a, int b){
+        return a > b;
+    });
+
+    cout << "Sorted nums : " <<  endl;
+    for (int n : nums){
+        cout << n << " ";
+    }
+    cout << endl;
+
+    // Generic lambdas C++14 and later, we can use auto to make lambda work with any type.
+    auto print = [](auto x){
+        cout << x << endl;
+    };
+    print(42);
+    print(13.5);
+    print("fafsd");
+    print("132asfsa");
+
+    return 0;
+}
+```
 
 ## Polymorphism
+```
+#include <iostream>
+using namespace std;
+
+/*
+Polymorphism ::
+- It allows objects of different classes to be treated as objects of a common base class.
+- It enables funtions to process objects differently based on their actual derived type, even when those objects are
+--- accessed through a pointer or reference of the base class.
+
+Two Types ::
+- Compile-Time (Static) Polymorphism
+--- Achieved using function overloading, operator overloading and templates.
+--- The function to be called is resovled at compile time.
+
+- Run-Time (Dynamic) Polymorphism
+--- Acheived using inheritance and virtual functions.
+--- The function to be called is determined at runtime based on the actual object type.
+*/
+
+int main()
+{
+    // Nothing here.
+}
+```
 
 ## Function overloading
+```
+#include <iostream>
+using namespace std;
+
+/*
+- It allows multiple functions with the same name but different parameter lists to be defined.
+- The corret function to be called is determined by the arguments passed.
+*/
+
+class Print {
+    public:
+        void show (int i) {
+            cout << "Integer : " << i << endl;
+        }
+        void show (double i) {
+            cout << "Double : " << i << endl;
+        }
+        void show (string i) {
+            cout << "String : " << i << endl;
+        }
+};
+
+int main()
+{
+/*
+- Function is overloaded 3 times with different arguments.
+- The compiler will determine which function to call based on argument type at the compile time.
+*/
+    Print p;
+    p.show(10);
+    p.show(10.7);
+    p.show("fas4234");
+
+    return 0;
+}
+```
 
 ## Virtual Function
+```
+#include <iostream>
+using namespace std;
+
+/*
+Run-Time Polymorphism ::
+- Using inheritance and virtual functions.
+
+Virtual Functions ::
+- It is a function in a base class that is over-ridden in a derived class.
+- They allow the correct function to be called for an object, regardless the type of reference (or pointer) used for function call.
+*/
+
+// Base Class
+class Animal {
+    public:
+        virtual void sound() {
+            cout << "Animal makes a sound." << endl;
+        }
+};
+
+/*
+Declaring,
+virtual void sound() = 0; // it will become a pure virtual function which has no implementation in base class.
+- A class containing a pure virtual function is considered abstract and cannot be instantiated.
+*/
+
+// Derived Class
+class Dog : public Animal {
+    public:
+        void sound() override {
+            cout << "Dog barks." << endl;
+        }
+};
+
+// Another Derived Class
+class Cat : public Animal {
+    public:
+        void sound() override {
+            cout << "Car meows." << endl;
+        }
+};
+
+int main()
+{
+    Animal *animalPtr;
+    Dog dog;
+    Cat cat;
+
+    animalPtr = &dog;
+    animalPtr->sound();
+
+    animalPtr = &cat;
+    animalPtr->sound();
+}
+```
