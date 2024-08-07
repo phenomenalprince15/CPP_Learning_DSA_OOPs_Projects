@@ -1,0 +1,4 @@
+C:/Users/wikis/OneDrive/Documents/CPP/OOPS_with_C/OOP_Projects/Library_Management_System.cpp/build/CMakeFiles/LibraryManagementSystem.dir
+C:/Users/wikis/OneDrive/Documents/CPP/OOPS_with_C/OOP_Projects/Library_Management_System.cpp/build/CMakeFiles/test.dir
+C:/Users/wikis/OneDrive/Documents/CPP/OOPS_with_C/OOP_Projects/Library_Management_System.cpp/build/CMakeFiles/edit_cache.dir
+C:/Users/wikis/OneDrive/Documents/CPP/OOPS_with_C/OOP_Projects/Library_Management_System.cpp/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,20 @@
+[
+    {
+        "book_isbn": "1234567890",
+        "borrowing": true,
+        "date": 1690948472,
+        "member_id": 1
+    },
+    {
+        "book_isbn": "1234567890",
+        "borrowing": true,
+        "date": 1722851479,
+        "member_id": 121
+    },
+    {
+        "book_isbn": "1234567890",
+        "borrowing": false,
+        "date": 1722852515,
+        "member_id": 121
+    }
+]

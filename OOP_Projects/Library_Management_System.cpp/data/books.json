@@ -1,0 +1,14 @@
+[
+    {
+        "author": "Author Name",
+        "available": true,
+        "isbn": "1234567890",
+        "title": "Sample Book"
+    },
+    {
+        "author": "Cixin Liu",
+        "available": true,
+        "isbn": "1234567891",
+        "title": "Three body problem"
+    }
+]
