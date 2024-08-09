@@ -1,3 +1,0 @@
-C:/Users/wikis/OneDrive/Documents/CPP/OOPS_with_C/build/CMakeFiles/AnimalShelterManagement.dir
-C:/Users/wikis/OneDrive/Documents/CPP/OOPS_with_C/build/CMakeFiles/edit_cache.dir
-C:/Users/wikis/OneDrive/Documents/CPP/OOPS_with_C/build/CMakeFiles/rebuild_cache.dir
