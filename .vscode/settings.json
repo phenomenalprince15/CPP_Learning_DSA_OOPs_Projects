@@ -71,5 +71,6 @@
         "stop_token": "cpp"
     },
     "cmake.sourceDirectory": "C:/Users/wikis/OneDrive/Documents/CPP/OOPS_with_C/OOP_Projects/Animal_Shelter_Management_System_with_Cmake",
-    "C_Cpp.dimInactiveRegions": false
+    "C_Cpp.dimInactiveRegions": false,
+    "cmake.ignoreCMakeListsMissing": true
 }
