@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\AnimalShelterManagement.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\AnimalShelterManagement.dir/objects.a @CMakeFiles\AnimalShelterManagement.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\AnimalShelterManagement.dir/objects.a -Wl,--no-whole-archive -o AnimalShelterManagement.exe -Wl,--out-implib,libAnimalShelterManagement.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\AnimalShelterManagement.dir\linkLibs.rsp
