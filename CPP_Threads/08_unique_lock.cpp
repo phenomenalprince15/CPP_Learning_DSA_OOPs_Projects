@@ -6,7 +6,7 @@
 - lock_guard provides a simple, RAII style mechanism for acquiring and releasing a mutex.
 When a lock_guard object is created, it locks the mutex, and when it goes out of scope, it automatically release the mutex.
 
-- unique_lock provides more flexibilitythan lock_guard. It can be used for deferred locking, timed locking, and unlocking before
+- unique_lock provides more flexibility than lock_guard. It can be used for deferred locking, timed locking, and unlocking before
 end of its scope. It gives more control over the locking mechanism.
 */
 

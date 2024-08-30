@@ -90,6 +90,18 @@ void removeStudent(std::vector<std::unique_ptr<Student>>& students, const char* 
     students.erase(it, students.end());
 }
 
+void searchStudent(std::vector<std::unique_ptr<Student>>& students, const char* name) {
+    auto it = std::find_if(students.begin(), students.end(),
+    [name](const std::unique_ptr<Student>& student) {
+        return strcmp(student->getName(), name) == 0;
+    });
+    if (it != students.end()) {
+        std::cout << "Found" << std::endl;
+    } else {
+        std::cout << "Not Found" << std::endl;
+    }
+}
+
 void displayStudents(const std::vector<std::unique_ptr<Student>>& students) {
     for (const auto& student : students) {
         std::cout << "Name: " << student->getName() << ", Age: " << student->getAge() << ", Average grade: "
@@ -102,8 +114,18 @@ int main() {
 
     addStudent(students, "Prince", 20, {90, 90, 90});
     addStudent(students, "Alice", 20, {79, 91, 90});
-
+    addStudent(students, "Time", 20, {79, 91, 90});
+    addStudent(students, "Space", 20, {79, 91, 90});
+    addStudent(students, "Einstein", 20, {79, 91, 90});
     displayStudents(students);
+
+    searchStudent(students, "Time");
+
+    removeStudent(students, "Time");
+    displayStudents(students);
+    searchStudent(students, "Time");
+    displayStudents(students);
+
 
     return 0;
 }

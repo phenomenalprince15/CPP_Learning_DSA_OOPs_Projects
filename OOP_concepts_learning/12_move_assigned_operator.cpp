@@ -4,7 +4,7 @@ using namespace std;
 /*
 Move assginment Operator
 - It is used to transfer ownership of resources from one existing to another, rather than copying it.
-- ClassName& operator-(ClassName &&obj) noexcept;
+- ClassName& operator=(ClassName &&obj) noexcept;
 */
 
 class Example {
