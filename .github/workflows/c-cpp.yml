@@ -1,4 +1,4 @@
-name: C++ CI
+name: C++ Build and Test
 
 on:
   push:
@@ -13,26 +13,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up C++ environment
-      uses: actions/setup-cpp@v1
-      with:
-        gcc-version: '12'  # Specify your GCC version
-        gxx-version: '12'  # Specify your G++ version
+      - name: Set up C++ environment
+        uses: actions/setup-cpp@v1
+        with:
+          compiler: g++
 
-    - name: Install dependencies
-      run: sudo apt-get install -y cmake
+      - name: Install dependencies
+        run: sudo apt-get install -y build-essential
 
-    - name: Build
-      run: |
-        mkdir -p build
-        cd build
-        cmake ..
-        make
+      - name: Build
+        run: |
+          mkdir -p build
+          cd build
+          cmake ..
+          make
 
-    - name: Run tests
-      run: |
-        cd build
-        ./run_tests  # Replace with your actual test executable
+      - name: Run tests
+        run: |
+          cd build
+          ctest
